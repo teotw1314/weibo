@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://D:\asproject\weibo\sky_main\app.iml" filepath="D:\asproject\weibo\sky_main\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_webview/lib_webview.iml" filepath="$PROJECT_DIR$/lib_webview/lib_webview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_account/sky_account.iml" filepath="$PROJECT_DIR$/sky_account/sky_account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_base/sky_base.iml" filepath="$PROJECT_DIR$/sky_base/sky_base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_common/sky_common.iml" filepath="$PROJECT_DIR$/sky_common/sky_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_data/sky_data.iml" filepath="$PROJECT_DIR$/sky_data/sky_data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_home/sky_home.iml" filepath="$PROJECT_DIR$/sky_home/sky_home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_main/sky_main.iml" filepath="$PROJECT_DIR$/sky_main/sky_main.iml" />
+      <module fileurl="file://D:\asproject\weibo\sky_account\sky_session.iml" filepath="D:\asproject\weibo\sky_account\sky_session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sky_timeline/sky_timeline.iml" filepath="$PROJECT_DIR$/sky_timeline/sky_timeline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weibo.iml" filepath="$PROJECT_DIR$/weibo.iml" />
+    </modules>
+  </component>
+</project>
