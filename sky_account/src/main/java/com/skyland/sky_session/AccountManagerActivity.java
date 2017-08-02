@@ -37,6 +37,7 @@ import javax.inject.Inject;
 
 public class AccountManagerActivity extends BaseSubActivity {
     private static final String TAG = "Account";
+
     private RecyclerView recyclerView;
     private Button btnAddAccount;
     private ProgressDialog progressDialog;
@@ -100,12 +101,14 @@ public class AccountManagerActivity extends BaseSubActivity {
     }
 
     private void refreshAccountList() {
-        accountList = AccountUtils.getDefault().getAccountList(this);
+        accountList.clear();
+        accountList.addAll(AccountUtils.getDefault().getAccountList(this));
         Log.e(TAG, "refreshAccountList: " + accountList.size() );
         adapter.notifyDataSetChanged();
     }
 
     private void onClickAccountItem(AccountInfo accountInfo) {
+        AccountUtils.getDefault().setCurrentAccount(this, accountInfo);
         Router.getDefault().pushHomeActivity(this, accountInfo.uid);
     }
 
@@ -170,7 +173,7 @@ public class AccountManagerActivity extends BaseSubActivity {
         accountInfo.refresh_token = this.accessToken;
         accountInfo.uid = this.uid;
         accountInfo.name = userInfo.name;
-        accountInfo.header_url = userInfo.profile_image_url;
+        accountInfo.header_url = userInfo.avatar_hd;
         AccountUtils.getDefault().setAccount(this, accountInfo);
         refreshAccountList();
         hideProgress();

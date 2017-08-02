@@ -32,4 +32,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation project(':sky_common')
     implementation project(':sky_timeline')
+    implementation project(':sky_account')
 }

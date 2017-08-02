@@ -13,9 +13,9 @@ import com.skyland.sky_common.di.components.AppComponent;
 
 public abstract class BaseSubActivity extends BaseActivity{
 
-    public AppComponent getAppComponent(){
-        return ((App)getApplication()).getAppComponent();
-    }
+//    public AppComponent getAppComponent(){
+//        return ((App)getApplication()).getAppComponent();
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -2,16 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/dp_padding_screen"
     android:paddingRight="@dimen/dp_padding_screen">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/item_weibo_imgv_avatar"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:padding="10dp" />
+        android:padding="@dimen/dp_padding_screen" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -24,6 +23,7 @@
             style="@style/lib_common_text_timeline_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:text="teotws" />
 
         <TextView
@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/item_weibo_tv_name"
+            android:maxLines="1"
             android:text="1s befaule" />
 
         <TextView
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/item_weibo_tv_time"
             android:layout_toRightOf="@+id/item_weibo_tv_time"
+            android:maxLines="1"
             android:text="from sina" />
 
 

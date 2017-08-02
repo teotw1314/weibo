@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 
+import com.skyland.sky_common.app.App;
 import com.skyland.sky_common.ui.LazyFragment;
 import com.skyland.sky_data.base.NetworkListener;
 import com.skyland.sky_data.bean.StatusInfo;
@@ -30,27 +31,25 @@ public class TimelineFragment extends LazyFragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
 
-    private List<String> listData = new ArrayList<>();
+
+    private LinearLayoutManager layoutManager;
+    private TimelineListAdapter timelineAdapter;
+    private List<StatusInfo> statusInfoList = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
-        return R.layout.lib_timeline_item_weibo;
+        return R.layout.lib_timeline_fragment;
     }
 
     @Override
     protected void initView(View rootView) {
 //        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipelayout_lib_timeline);
-//        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_lib_timeline);
-//
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-//        TimelineListAdapter adapter = new TimelineListAdapter(listData);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setAdapter(adapter);
-//        for (int i = 0; i < 60; i++) {
-//            listData.add("skyland " + i);
-//        }
-//        adapter.notifyDataSetChanged();
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_lib_timeline);
 
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        timelineAdapter = new TimelineListAdapter(statusInfoList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(timelineAdapter);
     }
 
     @Override
@@ -59,9 +58,9 @@ public class TimelineFragment extends LazyFragment {
     }
 
     private void refreshTimeline() {
-        AccountInfo accountInfo = AccountUtils.getDefault().getCurrentAccount(getContext());
+        AccountInfo accountInfo = AccountUtils.getDefault().getCurrentAccount(App.getInstance());
 
-        SkyNetwork.getDefault().getTimeline(accountInfo.refresh_token, "0", "0", 10, 0, new NetworkListener<StatusResult>() {
+        SkyNetwork.getDefault().getTimeline(accountInfo.refresh_token, "0", "0", 20, 1, new NetworkListener<StatusResult>() {
             @Override
             public void onError(Throwable e) {
 
@@ -77,8 +76,11 @@ public class TimelineFragment extends LazyFragment {
     private void refreshTimelineSuccess(List<StatusInfo> statusInfos) {
         Log.e(TAG, "refreshTimelineSuccess: " + statusInfos.size());
         for (int i = 0; i < statusInfos.size(); i++) {
-            Log.e(TAG, "refreshTimelineSuccess: " + statusInfos.get(i).text);
+            Log.e(TAG, "refreshTimelineSuccess: " + statusInfos.get(i).source);
         }
+        statusInfoList.clear();
+        statusInfoList.addAll(statusInfos);
+        timelineAdapter.notifyDataSetChanged();
     }
 
 }

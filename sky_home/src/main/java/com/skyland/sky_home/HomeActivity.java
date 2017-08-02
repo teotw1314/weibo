@@ -4,32 +4,35 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.skyland.sky_common.utils.DisplayUtils;
+import com.skyland.sky_session.AccountUtils;
 import com.skyland.sky_timeline.TimelineFragment;
-
 import org.greenrobot.eventbus.EventBus;
+import org.w3c.dom.Text;
+
 import java.util.Timer;
 import java.util.TimerTask;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by skyland on 2017/7/9
@@ -45,6 +48,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private AppBarLayout appBarLayout;
     private View viewToolbarTop;
     private Toolbar toolbar;
+    private CircleImageView imgvAvatar;
+    private TextView tvToolbarTitle;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ViewPager viewPager;
@@ -69,7 +74,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.lib_home_activity);
         initView();
         initTransparentToolbar();
-        initAnim();
         initViewPager();
     }
 
@@ -77,12 +81,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         appBarLayout = (AppBarLayout) findViewById(R.id.lib_home_appbar);
         viewToolbarTop = findViewById(R.id.lib_home_view_toolbar_top);
         toolbar = (Toolbar) findViewById(R.id.lib_home_toolbar);
-        toolbar.setTitle("DrawerLayout");
-        setSupportActionBar(toolbar);
+        imgvAvatar = (CircleImageView) findViewById(R.id.lib_home_toolbar_avatar);
+        tvToolbarTitle = (TextView) findViewById(R.id.lib_home_toolbar_title);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.lib_home_drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.lib_home_nav_layout);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Glide.with(this).load(AccountUtils.getDefault().getCurrentAccount(this).header_url).into(imgvAvatar);
+        tvToolbarTitle.setText("weibomm");
     }
 
 
@@ -90,7 +97,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
      * 沉浸状态栏
      */
     private void initTransparentToolbar() {
-
 
         //透明状态栏
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -120,7 +126,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         ViewGroup.LayoutParams lp = toolbar.getLayoutParams();
         lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        toolbarHeight = DisplayUtils.dp2px(this, 46 );
+        toolbarHeight = DisplayUtils.dp2px(this, 46);
         lp.height = toolbarHeight;
         toolbar.setLayoutParams(lp);
     }
@@ -133,17 +139,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
         viewPagerAdapter.addFragment(timelineFragment, "timeline");
         viewPager.setAdapter(viewPagerAdapter);
-    }
-
-    /**
-     * app bar anim
-     */
-    private void initAnim() {
-        showToolbarAnim = ObjectAnimator.ofFloat(appBarLayout, "translationY", -toolbarHeight, 0);
-        showToolbarAnim.setDuration(300);
-
-        hideToolbarAnim = ObjectAnimator.ofFloat(appBarLayout, "translationY", 0, -toolbarHeight);
-        hideToolbarAnim.setDuration(300);
     }
 
 

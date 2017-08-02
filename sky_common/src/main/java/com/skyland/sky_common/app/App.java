@@ -12,16 +12,24 @@ import com.skyland.sky_common.di.modules.AppModule;
 
 public class App extends Application {
 
-    AppComponent appComponent;
+//    AppComponent appComponent;
+
+    private static App instance;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+        instance = this;
+//        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     }
 
-    public AppComponent getAppComponent(){
-        return appComponent;
+    public static App getInstance(){
+        return instance;
     }
+
+//    public AppComponent getAppComponent(){
+//        return appComponent;
+//    }
 }

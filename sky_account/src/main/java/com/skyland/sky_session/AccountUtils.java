@@ -69,11 +69,11 @@ public class AccountUtils {
     public void setCurrentAccount(Context setContext, AccountInfo setAccountInfo) {
         Gson gson = new Gson();
         String current = gson.toJson(setAccountInfo);
-        SkySharedPreferencesUtils.getDefault().setSharedPreferencesWithAESEncrypt(setContext, KEY_CURRENT_ACCOUNT, current);
+        SkySharedPreferencesUtils.getDefault().setSharedPreferences(setContext, KEY_CURRENT_ACCOUNT, current);
     }
 
     public AccountInfo getCurrentAccount(Context setContext) {
-        String current = SkySharedPreferencesUtils.getDefault().getSharedPreferencesWithAESEncrypt(setContext, KEY_CURRENT_ACCOUNT, DEFAULT_ACCOUNT);
+        String current = (String) SkySharedPreferencesUtils.getDefault().getSharedPreferences(setContext, KEY_CURRENT_ACCOUNT, DEFAULT_ACCOUNT);
         if (TextUtils.equals(current, DEFAULT_ACCOUNT)) {
             return null;
         } else {

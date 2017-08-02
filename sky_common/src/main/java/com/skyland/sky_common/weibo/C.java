@@ -11,5 +11,7 @@ public class C {
     public static final String WEIBO_CALLBACK_URL = "https://api.weibo.com/oauth2/default.html";
     public static final String WEIBO_TYPE = "authorization_code";
 
+//    public static final String WEIBO
+
 
 }
