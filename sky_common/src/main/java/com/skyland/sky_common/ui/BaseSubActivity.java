@@ -4,12 +4,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.skyland.sky_common.R;
+import com.skyland.sky_common.app.App;
+import com.skyland.sky_common.di.components.AppComponent;
 
 /**
  * Created by skyland on 2017/7/12
  */
 
 public abstract class BaseSubActivity extends BaseActivity{
+
+    public AppComponent getAppComponent(){
+        return ((App)getApplication()).getAppComponent();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -6,4 +6,15 @@
 
     <dimen name="text_size_item_title">16sp</dimen>
     <dimen name="text_size_toolbar_title">18sp</dimen>
+
+    <!--dp-->
+    <dimen name="dp_padding_screen">12dp</dimen>
+    <dimen name="dp_padding_text">20dp</dimen>
+
+    <!--weibo-->
+    <dimen name="text_size_timeline_name">18sp</dimen>
+    <dimen name="text_size_timeline_time">12sp</dimen>
+    <dimen name="text_size_timeline_from">12sp</dimen>
+
+
 </resources>

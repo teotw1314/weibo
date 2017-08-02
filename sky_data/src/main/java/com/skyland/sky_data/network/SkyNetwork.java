@@ -1,9 +1,11 @@
 package com.skyland.sky_data.network;
 
+import com.skyland.sky_common.weibo.C;
 import com.skyland.sky_data.base.NetworkListener;
 import com.skyland.sky_data.base.NetworkSubscriber;
 import com.skyland.sky_data.bean.AccessTokenInfo;
 import com.skyland.sky_data.bean.UserInfo;
+import com.skyland.sky_data.result.StatusResult;
 
 import java.util.logging.StreamHandler;
 
@@ -61,15 +63,15 @@ public class SkyNetwork {
     }
 
     public String getAppKey() {
-        return WEIBO_APP_KEY;
+        return C.WEIBO_APP_KEY;
     }
 
     public String getAppSecret() {
-        return WEIBO_APP_SECRET;
+        return C.WEIBO_APP_SECRET;
     }
 
     public String getCallbackUrl() {
-        return WEIBO_CALLBACK_URL;
+        return C.WEIBO_CALLBACK_URL;
     }
 
     /**
@@ -86,7 +88,7 @@ public class SkyNetwork {
 
 
     public void getAccessToken(String setCode, NetworkListener<AccessTokenInfo> listener) {
-        Observable<AccessTokenInfo> observable = networkService.getAccessToken(WEIBO_APP_KEY, WEIBO_APP_SECRET, WEIBO_TYPE, setCode, WEIBO_CALLBACK_URL);
+        Observable<AccessTokenInfo> observable = networkService.getAccessToken(C.WEIBO_APP_KEY, C.WEIBO_APP_SECRET, C.WEIBO_TYPE, setCode, C.WEIBO_CALLBACK_URL);
         setSubscribeOn(observable, listener);
     }
 
@@ -96,15 +98,13 @@ public class SkyNetwork {
     }
 
 
-    public void getStatuses() {
-
+    public void getTimeline(String setAccessToken, String setSinceId, String setMaxId, int setCount, int setPage, NetworkListener<StatusResult> listener) {
+        Observable<StatusResult> observable = networkService.getTimeline(setAccessToken, setSinceId, setMaxId, setCount, setPage, 0);
+        setSubscribeOn(observable, listener);
 
     }
 
 
-    private static final String WEIBO_APP_KEY = "2121829066";
-    private static final String WEIBO_APP_SECRET = "a1a642a333e1ebf455c0c45a91511bc7";
-    private static final String WEIBO_CALLBACK_URL = "https://api.weibo.com/oauth2/default.html";
-    private static final String WEIBO_TYPE = "authorization_code";
+
 
 }

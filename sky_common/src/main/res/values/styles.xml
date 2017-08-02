@@ -44,4 +44,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="lib_common_text_timeline_name">
+        <item name="android:textSize">@dimen/text_size_timeline_name</item>
+        <item name="android:textColor">@color/text_color_timeline_name</item>
+    </style>
+
+    <style name="lib_common_text_timeline_time">
+        <item name="android:textSize">@dimen/text_size_timeline_time</item>
+        <item name="android:textColor">@color/text_color_timeline_time</item>
+    </style>
+
+    <style name="lib_common_text_timeline_from">
+        <item name="android:textSize">@dimen/text_size_timeline_from</item>
+        <item name="android:textColor">@color/text_color_timeline_from</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+
+    <style name="lib_common_divider_timeline">
+        <item name="android:layout_height">10dp</item>
+        <item name="android:background">@color/divider_color_1</item>
+    </style>
+
 </resources>

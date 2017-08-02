@@ -11,4 +11,9 @@
     <!--text color-->
     <color name="text_color_item_title">#212121</color>
     <color name="text_color_toolbar_title">#212121</color>
+
+    <!--weibo-->
+    <color name="text_color_timeline_name">#000000</color>
+    <color name="text_color_timeline_time">#949393</color>
+    <color name="text_color_timeline_from">#949393</color>
 </resources>

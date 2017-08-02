@@ -1,4 +1,4 @@
-package com.skyland.sky_common.utils;
+package com.skyland.sky_base.utils;
 
 import android.util.Base64;
 

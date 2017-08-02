@@ -33,7 +33,7 @@ public class SkyRouter extends Router {
     }
 
     @Override
-    public void pushHomeActivity(Context setContext) {
-        HomeActivity.startActivity(setContext);
+    public void pushHomeActivity(Context setContext, String setUid) {
+        HomeActivity.startActivity(setContext, setUid);
     }
 }

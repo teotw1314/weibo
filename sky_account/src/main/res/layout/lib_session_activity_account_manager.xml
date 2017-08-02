@@ -11,12 +11,6 @@
         android:layout_weight="1"/>
 
     <Button
-        android:text="showDialog"
-        android:id="@+id/btn_account_show_dialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
         android:id="@+id/btn_add_account"
         android:text="添加账号"
         android:layout_width="match_parent"

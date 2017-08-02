@@ -13,18 +13,18 @@ import java.util.List;
  * Created by skyland on 2017/7/15
  */
 
-public class AccountListAdapter extends BaseQuickAdapter<UserInfo, BaseViewHolder> {
+public class AccountListAdapter extends BaseQuickAdapter<AccountInfo, BaseViewHolder> {
 
-    public AccountListAdapter(List<UserInfo> data) {
+    public AccountListAdapter(List<AccountInfo> data) {
         super(R.layout.lib_session_item_account, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, UserInfo item) {
+    protected void convert(BaseViewHolder helper, AccountInfo item) {
         helper.setText(R.id.text_item_account_name, item.name);
         ImageView imageView = helper.getView(R.id.img_circle_item_account);
         Glide.with(mContext)
-                .load(item.profile_image_url)
+                .load(item.header_url)
                 .into(imageView);
 
 

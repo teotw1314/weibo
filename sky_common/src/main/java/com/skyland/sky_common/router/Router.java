@@ -44,7 +44,7 @@ public class Router {
         showFailed(setContext);
     }
 
-    public void pushHomeActivity(Context setContext){
+    public void pushHomeActivity(Context setContext, String uid){
         showFailed(setContext);
     }
 

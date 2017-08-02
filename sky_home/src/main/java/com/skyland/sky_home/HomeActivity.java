@@ -40,6 +40,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private static final String TAG = "home_activity";
 
+    private static final String INTENT_KEY_UID = "intent_uid";
+
     private AppBarLayout appBarLayout;
     private View viewToolbarTop;
     private Toolbar toolbar;
@@ -55,8 +57,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private int toolbarHeight;
     private boolean isAppbarShown = true;
 
-    public static void startActivity(Context setContext) {
+    public static void startActivity(Context setContext, String setUid) {
         Intent intent = new Intent(setContext, HomeActivity.class);
+        intent.putExtra(INTENT_KEY_UID, setUid);
         setContext.startActivity(intent);
     }
 
@@ -68,8 +71,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         initTransparentToolbar();
         initAnim();
         initViewPager();
-
-
     }
 
     private void initView() {

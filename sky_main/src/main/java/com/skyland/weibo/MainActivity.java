@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.skyland.lib_webview.core.WebViewBaseActivity;
+import com.skyland.sky_common.router.Router;
+import com.skyland.sky_session.AccountUtils;
 import com.skyland.weibo.router.SkyRouter;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,8 +23,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        test();
 //        pushOauthActivity();
-//        startAccountManagerActivity();
-        SkyRouter.getDefault().pushHomeActivity(this);
+        if(AccountUtils.getDefault().getCurrentAccount(this) == null){
+            startAccountManagerActivity();
+        }else{
+            Router.getDefault().pushHomeActivity(this, null);
+        }
+
+//        SkyRouter.getDefault().pushHomeActivity(this);
     }
 
     private void test() {
