@@ -30,7 +30,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     testImplementation 'junit:junit:4.12'
-    implementation project(':sky_common')
-    implementation project(':sky_timeline')
-    implementation project(':sky_account')
+    compile project(':sky_common')
+    compile project(':sky_timeline')
+    compile project(':sky_account')
 }

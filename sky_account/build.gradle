@@ -29,7 +29,7 @@ dependencies {
     })
     implementation 'com.android.support:appcompat-v7:25.3.1'
     testImplementation 'junit:junit:4.12'
-    implementation project(':sky_common')
-    implementation project(':lib_webview')
-    implementation project(':sky_data')
+    compile project(':sky_common')
+    compile project(':lib_webview')
+    compile project(':sky_data')
 }

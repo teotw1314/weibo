@@ -1,5 +1,6 @@
 package com.skyland.sky_timeline;
 
+import android.graphics.Color;
 import android.media.Image;
 import android.widget.ImageView;
 
@@ -9,6 +10,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.skyland.sky_base.utils.DateUtils;
 import com.skyland.sky_common.app.App;
 import com.skyland.sky_common.utils.AppUtils;
+import com.skyland.sky_common.utils.WeiboTextUtils;
 import com.skyland.sky_data.bean.StatusInfo;
 
 import java.util.Calendar;
@@ -39,7 +41,7 @@ public class TimelineListAdapter extends BaseQuickAdapter<StatusInfo, BaseViewHo
         helper.setText(R.id.item_weibo_tv_comment_count, String.valueOf(item.comments_count));
         helper.setText(R.id.item_weibo_tv_like_count, String.valueOf(item.attitudes_count));
 
-        helper.setText(R.id.item_weibo_tv_content, item.text);
+        helper.setText(R.id.item_weibo_tv_content, WeiboTextUtils.getSpanContent(mContext, item.text, Color.parseColor("#009ad6")));
 
 
     }

@@ -76,7 +76,7 @@ public class TimelineFragment extends LazyFragment {
     private void refreshTimelineSuccess(List<StatusInfo> statusInfos) {
         Log.e(TAG, "refreshTimelineSuccess: " + statusInfos.size());
         for (int i = 0; i < statusInfos.size(); i++) {
-            Log.e(TAG, "refreshTimelineSuccess: " + statusInfos.get(i).source);
+            Log.e(TAG, "refreshTimelineSuccess: " + statusInfos.get(i).text);
         }
         statusInfoList.clear();
         statusInfoList.addAll(statusInfos);
